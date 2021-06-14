@@ -541,12 +541,12 @@
 						$div += "<div class='form-group instruDiv'>";
 							$div += "<label class='control-label col-sm-2' style='white-space: nowrap'>Instrument "+(i+1)+"</label>";
 							$div += "<div class='btn-group col-sm-5'>";
-								<!-- Label !-->
+								// <!-- Label !-->
 								$div += "<div class='btn btn-static instruItem coloredItem' instruId='"+$obj['data'][i]["instruId"]+"' instruName='"+$obj['data'][i]["instruName"]+"'>&nbsp;&nbsp;&nbsp;&nbsp;"+$obj['data'][i]["instruName"]+"&nbsp;&nbsp;&nbsp;&nbsp;</div>";
-								<!-- Modifier -->
+								// <!-- Modifier -->
 								$div += '<button class="btn btn-default update_btn" href="<?php echo site_url("members/update_instrument/").$member_item->slug ?>/'+$obj['data'][i]["instruId"]+'" data-remote="false" data-toggle="modal" data-target="#updateInstruModal"><i class="glyphicon glyphicon-pencil"></i></button>';
 
-								<!-- Supprimer -->
+								// <!-- Supprimer -->
 								$div += '<button class="btn btn-default delete_btn" title="Supprimer instrument"><i class="glyphicon glyphicon-trash"></i></button>';
 							$div += "</div>";
 						$div += "</div>";

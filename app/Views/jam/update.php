@@ -77,40 +77,40 @@
 		
 		
 		
-		// On rempli les FLEXDATALIST
+		// ANCHOR On rempli les FLEXDATALIST
 		// LIEUX
 		$('[id^=lieu].flexdatalist').flexdatalist({
-			 minLength: 0,
-			 selectionRequired: true,
-			 data: [{ 'id':'-1', 'name':'lieu non défini'},
+			minLength: 0,
+			selectionRequired: true,
+			data: [{ 'id':'-1', 'name':'lieu non défini'},
 					<?php foreach ($list_lieux as $lieu): ?>
 						{ 'id':'<?php echo $lieu["id"] ?>', 'name':'<?php echo addslashes(htmlspecialchars($lieu["nom"])) ?>'},
 					<?php endforeach ?>
 					],
-			 searchIn: 'name',
-			 searchByWord: true,
-			 valueProperty: 'id'	// on envoie l'attribut 'id' quand on appelle la méthode val()
+			searchIn: 'name',
+			searchByWord: true,
+			valueProperty: 'id'	// on envoie l'attribut 'id' quand on appelle la méthode val()
 			});
 			
 		// MEMBRES
 		$('.memberList').flexdatalist({
-			 minLength: 0,
-			 selectionRequired: true,
-			 data: [
+			minLength: 2,
+			selectionRequired: true,
+			data: [
 					<?php foreach ($list_membres as $membre): ?>
 						{ 'id':'<?php echo $membre->id ?>',
-							'pseudo':'<?php echo addslashes(htmlspecialchars($membre->pseudo)) ?>',
+							'pseudo':'<?php echo addslashes(htmlspecialchars($membre->pseudo)) ?>', 
 							'nom':'<?php echo addslashes(htmlspecialchars($membre->nom)) ?>',
 							'prenom':'<?php echo addslashes(htmlspecialchars($membre->prenom)) ?>',
 							'mainInstru':'<?php echo addslashes(htmlspecialchars($membre->mainInstruName)) ?>'
 						},
 					<?php endforeach ?>
 					],
-			 searchIn: ["pseudo","prenom","nom","mainInstru"],
-			 visibleProperties: ["pseudo","prenom","nom","mainInstru"],
-			 searchByWord: true,
-			 valueProperty: ['id','pseudo']	// on envoie l'attribut 'id' quand on appelle la méthode val()
-			});
+			searchIn: ["pseudo","prenom","nom","mainInstru"],
+			visibleProperties: ["pseudo","prenom","nom","mainInstru"],
+			searchByWord: true,
+			valueProperty: ['id','pseudo']	// on envoie l'attribut 'id' quand on appelle la méthode val()
+		});
 
 			
 		
@@ -997,7 +997,7 @@
 		
 		<!--===================  GESTION DES ADMINS ============== !-->
 		
-		<!--------------  COORGANISATEURS  ----------------->
+		<!--------------  ANCHOR COORGANISATEURS  ----------------->
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="adminInput">Coorganisateurs</label>
 			<div class="input-group col-sm-7">

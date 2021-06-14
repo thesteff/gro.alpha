@@ -385,7 +385,7 @@
 		//console.log("refresh_jam : "+$action);
 	
 		if ($action == "join_jam") {
-			var newBtn = "<button class='btn btn-checked' type='submit' name='quit_jam' onclick='quit_jam_modal()'><i class='glyphicon glyphicon-ok'></i>&nbsp;&nbsp;&nbsp;Je participe</button>";
+			var newBtn = "<button class='btn btn-checked' type='submit' name='quit_jam' onclick='quit_jam_modal()'><i class='cr-icon glyphicon glyphicon-ok'></i>&nbsp;&nbsp;&nbsp;Je participe</button>";
 			$("button[name=join_jam]").replaceWith(newBtn);
 			
 			// On change l'état de la span attend
@@ -811,12 +811,12 @@
 							// Lien du fichier
 							$div += "&nbsp;&nbsp;<a href='"+$obj['jamURL']+'/'+$obj['data'][i].fileName+"' target='_blanck'>"+$obj['data'][i].fileName+"</a>";
 							
-							<!-- ADMIN SECTION -->
+							// <!-- ADMIN SECTION -->
 							<?php if ($is_admin): ?>
 								$div += '<div class="btn-group btn-group-xs pull-right resAdmin">';
-									<!-- Modifier -->
+									// <!-- Modifier -->
 									$div += '<button class="btn btn-default update_btn disabled" href="" data-remote="false" data-toggle="modal" data-target="#updateFileModal" title="Modifier fichier"><i class="glyphicon glyphicon-pencil"></i></button>';
-									<!-- Supprimer -->
+									// <!-- Supprimer -->
 									$div += '<button class="btn btn-default delete_btn" title="Supprimer fichier"><i class="glyphicon glyphicon-trash"></i></button>';
 								$div += '</div>';
 							<?php endif; ?>
@@ -1418,7 +1418,7 @@
 						// On créé le block d'affichage
 						nbHide = $obj['data'].length -1;
 						modifier = nbHide == 1 ? "" : "s";
-						var msgBlock = jQuery("<div class='uiBlock'><i class='develop'>&nbsp;&nbsp;&nbsp;&nbsp;</i><a class='develop' href=''>Afficher "+($obj['data'].length-1)+" autre"+modifier+" réponse"+modifier+"</a></div>");
+						var msgBlock = jQuery("<div class='uiBlock'><i class='bi bi-arrow-return-right'></i><a class='develop' href=''>Afficher "+($obj['data'].length-1)+" autre"+modifier+" réponse"+modifier+"</a></div>");
 						
 						// On insère le block au bon endroit
 						targetMsgBlock = $("#messageList .message[id="+$targetId+"]").parents(".messageBlock");
@@ -1931,7 +1931,7 @@
 							
 							<!-- L'utilisateur participe, bouton de desinscription !-->
 							<?php elseif ($attend) :?>
-								<button class="btn btn-checked" type="submit" name="quit_jam" onclick="quit_jam_modal()"><i class='glyphicon glyphicon-ok'></i>&nbsp;&nbsp;&nbsp;Je participe</button>
+								<button class="btn btn-checked" type="submit" name="quit_jam" onclick="quit_jam_modal()"><i class="cr-icon glyphicon glyphicon-ok"></i>&nbsp;&nbsp;&nbsp;Je participe</button>
 							<?php endif; ?>
 							
 						</div>
@@ -2035,7 +2035,7 @@
 			<!-- **** LIEU **** !-->
 			<div id="jamLieuPanel" class="panel panel-default no-border" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 18px; margin:0px 16px;" src="/images/icons/lieu.png" alt="lieu"></div>
+				<div style="align-self:center"><img style="height: 18px; margin:0px 16px;" src="<?php echo base_url("/images/icons/lieu.png") ?>" alt="lieu"></div>
 				<!-- Block !-->
 				<div>
 					<!-- Nom du lieu !-->
@@ -2053,7 +2053,7 @@
 			<?php if (isset($stage_item)) : ?>
 			<div id="stageLieuPanel" class="panel panel-default no-border hidden" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 18px; margin:0px 16px;" src="/images/icons/lieu.png" alt="lieu"></div>
+				<div style="align-self:center"><img style="height: 18px; margin:0px 16px;" src="<?php echo base_url("/images/icons/lieu.png") ?>" alt="lieu"></div>
 				<!-- Block !-->
 				<div>
 					<!-- Nom du lieu !-->
@@ -2073,7 +2073,7 @@
 			<!-- **** PLANNING INFOS **** !-->
 			<div id="jamPlanningPanel" class="panel panel-default no-border" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 13px; margin:0px 16px;" src="/images/icons/time.png" alt="time"></div>
+				<div style="align-self:center"><img style="height: 13px; margin:0px 16px;" src="<?php echo base_url("/images/icons/time.png") ?>" alt="time"></div>
 				<!-- Block !-->
 				<?php if ($jam_item['date_debut'] == $jam_item['date_fin']) : ?>
 					<h6><b>planning non défini</b></h6>
@@ -2093,7 +2093,7 @@
 			<?php if (isset($stage_item)) : ?>
 			<div id="stagePlanningPanel" class="panel panel-default no-border hidden" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 13px; margin:0px 16px;" src="/images/icons/time.png" alt="time"></div>
+				<div style="align-self:center"><img style="height: 13px; margin:0px 16px;" src="<?php echo base_url("/images/icons/time.png") ?>" alt="time"></div>
 				<!-- Block !-->
 				<div class="soften small" style="margin-top: 10px">
 					<p>
@@ -2210,20 +2210,20 @@
 									<thead>
 										<tr>
 											<th></th>
-											<th style="text-align:center"><span class="choeurs"><img style='height: 12px;' src='/images/icons/heart.png' title='choeurs'></span></th>
-											<th style="text-align:center"><span class="cuivres"><img style='height: 16px; margin:0 2' src='/images/icons/tp.png' title='cuivres'></span></th>
+											<th style="text-align:center"><span class="choeurs"><img style='height: 12px;' src='<?php echo base_url("/images/icons/heart.png") ?>' title='choeurs'></span></th>
+											<th style="text-align:center"><span class="cuivres"><img style='height: 16px; margin:0 2' src='<?php echo base_url("/images/icons/tp.png") ?>' title='cuivres'></span></th>
 											<?php if (isset($stage_item)):?>
-												<th style="text-align:center"><span class="stage"><img style='height: 16px;' src='/images/icons/metro.png' title='réservé aux stagiaires'></span></th>
+												<th style="text-align:center"><span class="stage"><img style='height: 16px;' src='<?php echo base_url("/images/icons/metro.png") ?>' title='réservé aux stagiaires'></span></th>
 											<?php endif; ?>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
 											<th></th>
-											<th style="text-align:center"><img style='height: 10px;' src='/images/icons/heart.png'></th>
-											<th style="text-align:center"><img style='height: 14px; margin:0 2' src='/images/icons/tp.png'></th>
+											<th style="text-align:center"><img style='height: 10px;' src='<?php echo base_url("/images/icons/heart.png") ?>'></th>
+											<th style="text-align:center"><img style='height: 14px; margin:0 2' src='<?php echo base_url("/images/icons/tp.png") ?>'></th>
 											<?php if (isset($stage_item)):?>
-												<th width="10px" style="text-align:center"><img style='height: 14px; margin:0 2' src='/images/icons/metro.png'><span class="stage"></span></th>
+												<th width="10px" style="text-align:center"><img style='height: 14px; margin:0 2' src='<?php echo base_url("/images/icons/metro.png") ?>'><span class="stage"></span></th>
 											<?php endif; ?>
 										</tr>
 									</tfoot>
@@ -2232,10 +2232,10 @@
 										<tr id="<?php echo $ref->versionId ?>" versionId="<?php echo $ref->versionId ?>" class="<?php if ($ref->reserve_stage) echo "stage_elem";?>">
 										<?php if ($ref->versionId != -1): ?>
 											<td><?php echo $ref->titre ?><small class="soften"> - <?php echo $ref->artisteLabel ?></small></td>
-											<td style="text-align: center"><?php if ($ref->choeurs == 1) echo "<img style='height: 12px;' src='/images/icons/ok.png'>";?></td>
-											<td style="text-align: center"><?php if ($ref->soufflants == 1) echo "<img style='height: 12px;' src='/images/icons/ok.png'>";?></td>
+											<td style="text-align: center"><?php if ($ref->choeurs == 1) echo "<i class='bi bi-check'></i>";?></td>
+											<td style="text-align: center"><?php if ($ref->soufflants == 1) echo "<i class='bi bi-check'></i>";?></td>
 											<?php if (isset($stage_item)):?>
-												<td style="text-align: center"><?php if ($ref->reserve_stage == 1) echo "<img style='height: 12px;' src='/images/icons/ok.png'>";?></td>
+												<td style="text-align: center"><?php if ($ref->reserve_stage == 1) echo "<i class='bi bi-check'></i>";?></td>
 											<?php endif; ?>
 										<?php else: ?>
 											<td colspan=4>-== pause ==-</td>
@@ -2408,8 +2408,8 @@
 							<span class="soften pull-left">Liste des participants <small>(<span id="nb_jammeur"><?php echo sizeof($list_members) ?></span>)</small></span>
 							<?php if (isset($member) && sizeof($list_members) > 0  && $jam_item["acces_jam"] != 2) :?>
 								<!-- Options d'affichage !-->
-								<button id="cat_icon" class="btn btn-default btn-xs pull-right transparent " onclick='javascript:change_display("pupitre")'><img style='height: 14px;' src='/images/icons/cat.png' title='afficher par categories'></button>
-								<button id="list_icon" class="btn btn-default btn-xs pull-right transparent hidden" onclick='javascript:change_display("list")'><img style='height: 14px;' src='/images/icons/list.png' title='afficher la liste'></button>
+								<button id="cat_icon" class="btn btn-default btn-xs pull-right transparent " onclick='javascript:change_display("pupitre")'><img style='height: 14px;' src='<?php echo base_url("/images/icons/cat.png") ?>' title='afficher par categories'></button>
+								<button id="list_icon" class="btn btn-default btn-xs pull-right transparent hidden" onclick='javascript:change_display("list")'><img style='height: 14px;' src='<?php echo base_url("/images/icons/list.png") ?>' title='afficher la liste'></button>
 							<?php endif; ?>
 							<div class="clearfix"></div>
 						</div>

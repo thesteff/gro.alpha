@@ -1,79 +1,85 @@
-
-
-<!DOCTYPE html>
 <html>
 <head>
 
-	<title>
-		<?php echo isset($page_title)?$page_title:$title;?> - Grenoble Reggae Orchestra
-	</title>
+	<link rel="icon" href="<?php echo base_url();?>images/favicon-GRO.ico" />
 	
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--<link rel="stylesheet" href="<?php echo base_url();?>css/normalize.css" />!-->
+	<link rel="stylesheet" href="<?php echo base_url();?>css/style.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>ressources/jquery-ui-1.11.4.custom/jquery-ui.min.css" />
 
 	
-	<link rel="icon" href="<?php echo base_url("images/favicon-GRO.ico");?>" />
-
-	<!-- STYLE!-->
-	<link rel="stylesheet" href="<?php echo base_url("css/style.css");?>" />	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	
 	<!-- Pour les vignettes réseaux sociaux (Open Graph) !-->
 	<meta property="og:title" content="<?php echo isset($page_title)?$page_title:$title;?>" />
 	<meta property="og:description" content="<?php echo isset($page_description)?$page_description:""; ?>" />
-	<meta property="og:image" content="<?php echo base_url("images/logo_small.png") ?>" />
+	<meta property="og:image" content="<?php echo base_url()."images/logo_small.png" ?>" />
 	<meta property="og:width" content="200" />
 	<meta property="og:height" content="200" />
 	
+	<title>
+		<?php echo isset($page_title)?$page_title:$title;?> - Grenoble Reggae Orchestra
+	</title>
 	
-	<!-- JQuery 3.4.1 !-->
-	<script
-			  src="https://code.jquery.com/jquery-3.4.1.min.js"
-			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	
+	<!--
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+	!-->
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous">
+	</script>
+	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
 			  crossorigin="anonymous">
 	</script>
 	
 	
-	<!-- BOOTSTRAP 3.3.7 !-->
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--
+	<script type="text/javascript" src="<?php echo base_url();?>ressources/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>ressources/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>ressources/jquery-ui-1.11.4.custom/jquery.ui.datepicker-fr.js"></script>
+	!-->
 	
-	<!-- Popper !-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<!-- Gestion des popups !-->
+	<script type="text/javascript" src="<?php echo base_url();?>ressources/tinybox2/packed.js"></script>	
 
 	
+	<!-- VUE JS !-->
+	<script type="text/javascript" src="<?php echo base_url();?>ressources/script/vue.min.js"></script>
+
 	
 	<script type="text/javascript">
 
-		$(function() {
-			// On stylise les colonnes
-			update_style();
-		});
-		
-
-		// Permet de centrer des td avec la class "centerTD" dans le theader
-		function update_style() {
-			$("table .centerTD").each(function() {
-				$(this).css("text-align","center");
-				$(this).parents("table").find("tr:not(.tablesorter-childRow) td:nth-child("+($(this).index()+1)+")").css("text-align","center");
-				$(this).parents("table").find("tr:not(.tablesorter-childRow) th:nth-child("+($(this).index()+1)+")").css("text-align","center");
-			});
-		}
-
+	$.datepicker.setDefaults($.datepicker.regional['fr']);
+	
+	
+	function show_mentions() {
+		// POPUP
+		$confirm = "<p>Les informations recueillies sont nécessaires pour votre adhésion.\nElles font l’objet d’un traitement informatique et sont destinées au secrétariat de l’association. En application des articles 39 et suivants de la loi du 6 janvier 1978 modifiée, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent. Si vous souhaitez exercer ce droit et obtenir communication des informations vous concernant, veuillez nous adresser un message à l'adresse suivante :\ncontact@le-gro.com.</p>";
+		TINY.box.show({html:$confirm,boxid:'confirm',animate:true,width:650});
+	}
+	
 	</script>
 	
+
+	<!-- FONTAWESOME : icones -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" referrerpolicy="no-referrer" />
 	
 </head>
 
 
- <body id="bootstrap-overrides">
-
-	<div class="navbar-wrapper">
-	<div id="canevas" class="container">
-
-		<div class="row hidden-xs" id="page_title">
-			<a href="<?php echo base_url();?>"><h1>Grenoble<br><?php echo str_repeat("&nbsp;",3)?>Reggae<br><?php echo str_repeat("&nbsp;",5)?>Orchestra</h1></a>
+ <body>
+	<div id="canevas">
+		<div id="entete">
+			<div id="page_title">
+				<a href="<?php echo base_url();?>index.php/"><h1>Grenoble<br><?php echo str_repeat("&nbsp;",3)?>Reggae<br><?php echo str_repeat("&nbsp;",5)?>Orchestra</h1></a>
+			</div>
+			<div id="logo"></div>
 		</div>
-			
+		
+		<div id="corps">
+		

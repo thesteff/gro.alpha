@@ -47,7 +47,8 @@
 			content: $('#popover-target')
 		});
 		
-		
+		// Les tooltip
+		$('[data-toggle="tooltip"]').tooltip();
 		
 		
 		$table2 = $("#tab2").tablesorter({
@@ -722,7 +723,7 @@
 				<?php if($is_admin == "1") : ?>
 				<div class="btn-group">
 					<!-- AJOUTER UN MEMBRE -->
-					<a class="btn btn-default" href='<?php echo site_url("jam/add_member/").$jam_item['id']; ?>'" data-remote="false" data-toggle="modal" data-target="#addModal"><i class="bi bi-person-plus-fill"></i>Ajouter un membre</a>
+					<a class="btn btn-default" href="<?php echo site_url("jam/add_member/").$jam_item['id']; ?>" data-remote="false" data-toggle="modal" data-target="#addModal"><i class="bi bi-person-plus-fill"></i>Ajouter un membre</a>
 				</div>	
 				<?php endif ?>
 				
@@ -744,7 +745,8 @@
 					<thead>
 						 <tr>
 							<th data-priority="critical" class="centerTD" style="width:15px">&nbsp;</th>
-							<th data-priority="6" class="centerTD" style="width:5px">Admin</th>
+							<th data-priority="6" class="centerTD" style="width:5px">Rôle</th>
+							<th data-priority="critical" class="centerTD" style="width:40px"><i class="bi bi-person-square bi_nopadding"></i></th>
 							<th data-priority="critical">Pseudo</th>
 							<th data-priority="5">Prénom</th>
 							<th data-priority="5">Nom</th>
@@ -760,7 +762,8 @@
 					<tfoot>
 						<tr>
 							<th><input id="select_all_jam_list" type="checkbox" onclick="select_all('jam_list')" /></th>
-							<th>Admin</th>
+							<th>Rôle</th>
+							<th><i class="bi bi-person-square bi_nopadding"></i></th>
 							<th>Pseudo</th>
 							<th>Prénom</th>
 							<th>Nom</th>
@@ -778,14 +781,22 @@
 							foreach ($list_members as $tmember) {
 								echo '<tr tmemberId="'.$tmember->id.'">';
 								
+									// Checkbox
 									echo '<td class="selector"><span style="display:none">0</span><input type="checkbox" /></td>';
+									
 									// Admin et référent
 									echo '<td>';
-										if (isset($tmember->admin) && $tmember->admin > 0) echo "<span style='display:none'>1</span><i class='bi bi-gear-fill soften'></i>";
+										if (isset($tmember->admin) && $tmember->admin > 0) echo "<span style='display:none'>1</span><i class='bi bi-gear-fill bi_doublepadding soften' data-toggle='tooltip' title='Administrateur' data-container='body'></i>";
 										else echo "<span style='display:none'>0</span>";
-										if (isset($tmember->referent) && $tmember->referent > 0) echo "<span style='display:none'>1</span><i class='bi bi-flag-fill soften'></i>";
+										if (isset($tmember->referent) && $tmember->referent > 0) echo '<span style="display:none">1</span><i class="bi bi-flag-fill bi_doublepadding soften"  data-toggle="tooltip" title="Référent '.$tmember->tag2Title.' '.$tmember->tag2Label.'" data-container="body"></i>';
 										else echo "<span style='display:none'>0</span>";
 									echo '</td>';
+									
+									// Avatar
+									$imgSrc = $tmember->hasAvatar > 0 ? base_url("images/avatar/".$tmember->id.".png") : base_url("images/icons/avatar2.png");
+									echo '<td><img class="img-circle" src="'.$imgSrc.'" width="26" height="26"></td>';
+									
+									// Infos
 									echo '<td><b>'.$tmember->pseudo.'</b></td>';
 									echo '<td>'.$tmember->prenom.'</td>';
 									echo '<td>'.$tmember->nom.'</td>';
@@ -798,13 +809,12 @@
 									echo '<td><span style="display:none">'.$tmember->genre.'</span>';
 										switch ($tmember->genre) {
 											case 0:
-												echo "<b>?</b>";
 												break;
 											case 1:
-												echo "<img style='height: 16px' src='/images/icons/man.png'>";
+												echo "<img style='height: 16px' src='".base_url("/images/icons/man.png")."'>";
 												break;
 											case 2:
-												echo "<img style='height: 16px' src='/images/icons/woman.png'>";
+												echo "<img style='height: 16px' src='".base_url("/images/icons/woman.png")."'>";
 												break;
 										}
 									echo '</td>';

@@ -323,7 +323,7 @@ hr.nomargin {
 @media (max-width: 768px) {
 	#bootstrap-overrides {
 		background-size: 748px 1122px;
-		//font-size: 115%;
+		/* font-size: 115%; */
 	}
 }
 
@@ -1071,6 +1071,11 @@ body.wait, body.wait *{
 
 #jam_list .tablesorter td {
 	vertical-align: middle;
+}
+
+#bootstrap-overrides td .bi-check {
+	font-size: 20px;
+	color: limegreen;
 }
 
 
