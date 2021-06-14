@@ -13,7 +13,6 @@ use App\Models\Invitation_model;
 
 
 class Jam extends BaseController {
-	
 	// Fonction de comparaison utilisée pour trier les membres par mainInstruName ascendant
 	public function cmp($a, $b) {
 		return strcmp($a->mainInstruName, $b->mainInstruName);
@@ -21,7 +20,6 @@ class Jam extends BaseController {
 	
 	/***************** Index (list) **************************/
 	public function index() {
-		
 		$members_model = new Members_model();
 		$jam_model = new Jam_model();
 		$stage_model = new Stage_model();
@@ -446,6 +444,8 @@ class Jam extends BaseController {
 	//***********************************************************************//
 	public function manage($slug) {
 	
+		log_message("debug",$slug);
+
 		if($this->session->login) {
 				
 			$jam_model = new Jam_model();
@@ -573,15 +573,27 @@ class Jam extends BaseController {
 		if($this->session->login) {
 
 			$jam_model = new Jam_model();
+			$members_model = new Members_model();
 
 			// On récupère la jam
 			$data['jam_item'] = $jam_model->get_jam_id($jamId);
+
+			log_message("debug","coucou");
 		
 			// On récupère la liste des membres qui participent à la jam
-			$data['list_members'] = $jam_model->get_list_members_not_in_jam($data['jam_item']['id']);
+			// $data['list_members'] = $jam_model->get_list_members_not_in_jam($data['jam_item']['id']);
 			
 			// On récupère la liste des membres qui participent à la jam
 			//$data['list_members'] = $this->members_model->get_members('null','asc');
+
+			// On récupère la liste des membres en ordre alpha
+			// $data['list_members'] = $members_model->get_members('null','asc');
+			$data['list_members'] = $members_model->get_list_members_not_in_jam($data['jam_item']['id']);
+			
+			// On récupère l'instrument principal de chaque participant
+			foreach ($data['list_members'] as $key => $elem) {
+				$members_model->get_mainInstru($data['list_members'][$key]);
+			}	
 			
 			
 			// On lance la vue pour une modal box (pop-up)
@@ -1138,7 +1150,6 @@ class Jam extends BaseController {
 			$affectations = $jam_model->get_affectations($slug);		
 			$data['affectations'] = $affectations;
 			
-
 
 			if (empty($data['jam_item'])) {
 				throw CodeIgniterxceptionsPageNotFoundException::forPageNotFound;
