@@ -8,19 +8,6 @@ Ce dépot permet à ceux qui le souhaitent de venir améliorer l'expérience d'u
 
 Pour rester connecter à l'actualité du collectif, vous pouvez vous inscrire sur le site ou suivre le groupe facebook du [Grenoble Reggae Orchestra](https://www.facebook.com/le.grenoble.reggae.orchestra).
 
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
-
 ## Utilisaton du dépot
 
 Ce dépot est utilisé afin de permettre de travailler de manière collaborative sur la plateforme du gro. De nombreux scripts sont actuellement inexistants afin de rendre l'application utilisable telle quelle (création de base de données, etc...).
