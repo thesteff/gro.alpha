@@ -1,20 +1,12 @@
-# CodeIgniter 4 Framework
+# Grenoble Reggae Orchestra - Plateforme Collaborative
 
-## What is CodeIgniter?
+## Qu'est-ce que le Grenoble Reggae Orchestra ?
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible, and secure. 
-More information can be found at the [official site](http://codeigniter.com).
+Le Grenoble Reggae Orchestra (GRO) est un collectif de musicien de la région de Grenoble (France). Ce collectif organise régulièrement des jam xxl dont l'organisation est assurée en grande partie grâce à la plateforme collaborative [le-gro.com](https://www.le-gro.com).
 
-This repository holds the distributable version of the framework,
-including the user guide. It has been built from the 
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Ce dépot permet à ceux qui le souhaitent de venir améliorer l'expérience d'utilisation de la plateforme collaborative avec pour ligne de mire de créer une plateforme plus généraliste et utilisable pour d'autres groupe/collectifs.
 
-**This is pre-release code and should not be used in production sites.**
-
-More information about the plans for version 4 can be found in [the announcement](http://forum.codeigniter.com/thread-62615.html) on the forums.
-
-The user guide corresponding to this version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/). 
+Pour rester connecter à l'actualité du collectif, vous pouvez vous inscrire sur le site ou suivre le groupe facebook du [Grenoble Reggae Orchestra](https://www.facebook.com/le.grenoble.reggae.orchestra).
 
 
 ## Important Change with index.php
@@ -29,31 +21,10 @@ framework are exposed.
 **Please** read the user guide for a better explanation of how CI4 works!
 The user guide updating and deployment is a bit awkward at the moment, but we are working on it!
 
-## Repository Management
+## Utilisaton du dépot
 
-We use Github issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Ce dépot est utilisé afin de permettre de travailler de manière collaborative sur la plateforme du gro. De nombreux scripts sont actuellement inexistants afin de rendre l'application utilisable telle quelle (création de base de données, etc...).
 
-This repository is a "distribution" one, built by our release preparation script. 
-Problems with it can be raised on our forum, or as issues in the main repository.
+## Contribuer
 
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/contributing.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 7.2 or higher is required, with the following extensions installed: 
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
-- xml (enabled by default - don't turn it off)
+Toute contribution est la bienvenue. N'hésitez pas à contacter le collectif via <contact@le-gro.com>
