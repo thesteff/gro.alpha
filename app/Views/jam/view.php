@@ -2035,7 +2035,11 @@
 			<!-- **** LIEU **** !-->
 			<div id="jamLieuPanel" class="panel panel-default no-border" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 18px; margin:0px 16px;" src="<?php echo base_url("/images/icons/lieu.png") ?>" alt="lieu"></div>
+				<div style="align-self:center">
+					<!-- <img style="height: 18px; margin:0px 16px;" src="<?php echo base_url("/images/icons/lieu.png") ?>" alt="lieu"> -->
+					<!-- <i class="bi bi-geo-alt" style="height: 18px; margin:0px 12px;"></i> -->
+					<i class="bi bi-geo-alt-fill" style="height: 18px; margin:0px 12px;"></i>
+				</div>
 				<!-- Block !-->
 				<div>
 					<!-- Nom du lieu !-->
@@ -2073,7 +2077,11 @@
 			<!-- **** PLANNING INFOS **** !-->
 			<div id="jamPlanningPanel" class="panel panel-default no-border" style="display:flex;">
 				<!-- Picto !-->
-				<div style="align-self:center"><img style="height: 13px; margin:0px 16px;" src="<?php echo base_url("/images/icons/time.png") ?>" alt="time"></div>
+				<div style="align-self:center">
+					<!-- <img style="height: 13px; margin:0px 16px;" src="<?php echo base_url("/images/icons/time.png") ?>" alt="time"> -->
+					<!-- <i class="bi bi-clock" style="height: 13px; margin:0px 12px;"></i> -->
+					<i class="bi bi-clock-fill" style="height: 13px; margin:0px 12px;"></i>
+				</div>
 				<!-- Block !-->
 				<?php if ($jam_item['date_debut'] == $jam_item['date_fin']) : ?>
 					<h6><b>planning non défini</b></h6>

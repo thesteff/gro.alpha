@@ -298,9 +298,9 @@
 						<th data-priority="4" class="no_sort centerTD"><span>Mode</span></th>
 						<th data-priority="6" class="no_sort centerTD"><span>Tempo</span></th>
 						<th data-priority="6" class="no_sort centerTD"><span>Langue</span></th>
-						<th data-priority="critical" class="no_sort centerTD" width="10px" style="text-align:center"><img style='height: 12px;' src='/images/icons/heart.png'><span></span></th>
-						<th data-priority="critical" class="no_sort centerTD" width="10px" style="text-align:center"><img style='height: 16px; margin:0px 2px' src='/images/icons/tp.png'><span></span></th>
-						<th data-priority="3" class="no_sort centerTD" width="10px"><span class="stage"><img style='height: 16px;' src='/images/icons/metro.png'></span></th>
+						<th data-priority="critical" class="no_sort centerTD" width="10px" style="text-align:center"><img style="height: 12px;" src="<?php echo base_url('/images/icons/heart.png'); ?>"><span></span></th>
+						<th data-priority="critical" class="no_sort centerTD" width="10px" style="text-align:center"><img style="height: 16px; margin:0px 2px" src="<?php echo base_url('/images/icons/tp.png'); ?>"><span></span></th>
+						<th data-priority="3" class="no_sort centerTD" width="10px"><span class="stage"><img style="height: 16px;" src="<?php echo base_url('/images/icons/metro.png'); ?>"></span></th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -312,9 +312,9 @@
 						<th class="centerTD">Mode</th>
 						<th class="centerTD">Tempo</th>
 						<th class="centerTD">Langue</th>
-						<th class="centerTD" width="10px" style="text-align:center"><img style='height: 10px;' src='/images/icons/heart.png'></th>
-						<th class="centerTD" width="10px" style="text-align:center"><img style='height: 14px; margin:0px 2px' src='/images/icons/tp.png'></th>
-						<th class="centerTD" width="10px"><img style='height: 14px; margin:0px 2px' src='/images/icons/metro.png'><span class="stage"></span></th>
+						<th class="centerTD" width="10px" style="text-align:center"><img style="height: 10px;" src="<?php echo base_url('/images/icons/heart.png'); ?>"></th>
+						<th class="centerTD" width="10px" style="text-align:center"><img style="height: 14px; margin:0px 2px" src="<?php echo base_url('/images/icons/tp.png'); ?>"></th>
+						<th class="centerTD" width="10px"><img style="height: 14px; margin:0px 2px" src="<?php echo base_url('/images/icons/metro.png'); ?>"><span class="stage"></span></th>
 					</tr>
 				</tfoot>
 				<tbody id="songlist_body">
@@ -328,8 +328,8 @@
 								<td><?php echo $song->mode; ?></td>
 								<td><?php echo $song->tempo; ?></td>
 								<td><?php echo $song->langue; ?></td>
-								<td><?php if ($song->choeurs == 1) echo "<span style='display:none'>1</span><img style='height: 12px' src='/images/icons/ok.png'>"; else echo "<span style='display:none'>0</span>"; ?></td>
-								<td><?php if ($song->soufflants == 1) echo "<span style='display:none'>1</span><img style='height: 12px' src='/images/icons/ok.png'>"; else echo "<span style='display:none'>0</span>"; ?></td>
+								<td><?php if ($song->choeurs == 1) echo "<span style='display:none'>1</span><i class='bi bi-check'></i>"; else echo "<span style='display:none'>0</span>"; ?></td>
+								<td><?php if ($song->soufflants == 1) echo "<span style='display:none'>1</span><i class='bi bi-check'></i>"; else echo "<span style='display:none'>0</span>"; ?></td>
 								<td></td>
 							</tr>
 						<?php endforeach; ?>

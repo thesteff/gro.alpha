@@ -159,8 +159,8 @@
 						<th class="centerTD" data-priority="5"><span>Mode</span></th>
 						<th class="centerTD" data-priority="4"><span>Tempo</span></th>
 						<th class="centerTD" data-priority="3"><span>Langue</span></th>
-						<th class="centerTD" data-priority="2" width="10" style="text-align:center"><img style='height: 12px;' src='/images/icons/heart.png'><span></span></th>
-						<th class="centerTD" data-priority="2" width="10" style="text-align:center"><img style='height: 16px; margin:0 2' src='/images/icons/tp.png'><span></span></th>
+						<th class="centerTD" data-priority="2" width="10" style="text-align:center"><img style="height: 12px;" src="<?php echo base_url('/images/icons/heart.png'); ?>"><span></span></th>
+						<th class="centerTD" data-priority="2" width="10" style="text-align:center"><img style="height: 16px; margin:0 2" src="<?php echo base_url('/images/icons/tp.png'); ?>"><span></span></th>
 						<?php if (isset($is_admin) && $is_admin) : ?>
 							<th class="centerTD" width="10">Joué</th>
 							<th class="sorter-shortDate dateFormat-ddmmyyyy centerTD" width="68">Dernière fois</th>
@@ -176,8 +176,8 @@
 						<th class="centerTD">Mode</th>
 						<th class="centerTD">Tempo</th>
 						<th class="centerTD">Langue</th>
-						<th class="centerTD" width="10" style="text-align:center"><img style='height: 10px;' src='/images/icons/heart.png'></th>
-						<th class="centerTD" width="10" style="text-align:center"><img style='height: 14px; margin:0 2' src='/images/icons/tp.png'></th>
+						<th class="centerTD" width="10" style="text-align:center"><img style="height: 10px;" src="<?php echo base_url('/images/icons/heart.png'); ?>"></th>
+						<th class="centerTD" width="10" style="text-align:center"><img style="height: 14px; margin:0 2" src="<?php echo base_url('/images/icons/tp.png'); ?>"></th>
 						<?php if (isset($is_admin) && $is_admin) : ?>
 							<th>Joué</th>
 							<th>Dernière fois</th>
@@ -194,8 +194,8 @@
 							<td><?php echo $song->mode; ?></td>
 							<td><?php echo $song->tempo; ?></td>
 							<td><?php echo $song->langue; ?></td>
-							<td><?php if ($song->choeurs == 1) echo "<span style='display:none'>1</span><img style='height: 12px' src='/images/icons/ok.png'>"; else echo "<span style='display:none'>0</span>"; ?></td>
-							<td><?php if ($song->soufflants == 1) echo "<span style='display:none'>1</span><img style='height: 12px' src='/images/icons/ok.png'>"; else echo "<span style='display:none'>0</span>"; ?></td>
+							<td><?php if ($song->choeurs == 1) echo "<span style='display:none'>1</span><i class='bi bi-check'></i>"; else echo "<span style='display:none'>0</span>"; ?></td>
+							<td><?php if ($song->soufflants == 1) echo "<span style='display:none'>1</span><i class='bi bi-check'></i>"; else echo "<span style='display:none'>0</span>"; ?></td>
 							<?php if (isset($is_admin) && $is_admin) : ?>
 								<td><?php echo $song->nbPlayed; ?></td>
 								<td><?php echo $song->lastDate;	?></td>

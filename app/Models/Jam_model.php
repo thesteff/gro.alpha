@@ -317,21 +317,21 @@ class Jam_model extends Model {
 	public function get_list_members_not_in_jam($jamId) {
 		
 		$list_members = $this->db->query('
-				SELECT pseudo,
-						membres.id as memberId,
-						nom, prenom, email, mobile, admin, genre
+				SELECT membres.id as memberId,
+					pseudo,	
+					nom, prenom, email, mobile, admin, genre
+					FROM membres
+					WHERE membres.id NOT IN
+					(
+						SELECT membres.id
 						FROM membres
-						WHERE membres.id NOT IN
-						(
-							SELECT membres.id
-							FROM membres
-							LEFT JOIN jam_membres_relation
-							ON membres.id = jam_membres_relation.membresId
-							WHERE jam_membres_relation.jamId = '.$jamId.'
-							AND jam_membres_relation.event_admin = 0
-							GROUP BY membres.id
-						)
-						ORDER BY pseudo
+						LEFT JOIN jam_membres_relation
+						ON membres.id = jam_membres_relation.membresId
+						WHERE jam_membres_relation.jamId = '.$jamId.'
+						AND jam_membres_relation.event_admin = 0
+						GROUP BY membres.id
+					)
+					ORDER BY pseudo
 				');
 			
 		return $list_members->getResult();	

@@ -24,7 +24,7 @@
 				<?php endforeach ?>
 			],
 			minLength: 2,
-			maxShownResults: 20,
+			// maxShownResults: 20,
 			searchByWord: true,
 			searchContain: true,
 			selectionRequired: true,
@@ -45,7 +45,7 @@
 </script>
 
 <!-- Formulaire ! -->
-		
+
 <div id="add_member_form" class="container-fluid">
 	<form role="form" class="form-horizontal" data-toggle="validator">
 		<div class="form-group">

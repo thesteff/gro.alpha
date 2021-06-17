@@ -211,7 +211,7 @@
 						<?php 
 							foreach ($list_members as $tmember) {
 								echo '<tr>';
-									echo '<td>'.($tmember->admin > 0 ? "<span style='display:none'>1</span><img style='height: 14px' src='/images/icons/gear.png'>" : "<span style='display:none'>0</span>").'</td>';
+									echo '<td>'.($tmember->admin > 0 ? "<span style='display:none'>1</span><i class='bi bi-gear-fill'></i>" : "<span style='display:none'>0</span>").'</td>';
 									echo '<td><b>'.$tmember->pseudo.'</b></td>';
 									echo '<td>'.$tmember->prenom.'</td>';
 									echo '<td>'.$tmember->nom.'</td>';
@@ -224,13 +224,13 @@
 									echo '<td><span style="display:none">'.$tmember->genre.'</span>';
 										switch ($tmember->genre) {
 											case 0:
-												echo "<b>?</b>";
+												echo "<i class='bi bi-question'></i>";
 												break;
 											case 1:
-												echo "<img style='height: 16px' src='/images/icons/man.png'>";
+												echo "<i class='bi bi-gender-male'></i>";
 												break;
 											case 2:
-												echo "<img style='height: 16px' src='/images/icons/woman.png'>";
+												echo "<i class='bi bi-gender-female'></i>";
 												break;
 										}
 									echo '</td>';
@@ -254,7 +254,7 @@
 									// Email valid
 									//echo '<td>'.$tmember->validMail.'</td>';
 									echo '<td>';
-									if ($tmember->validMail == 1) echo "<span style='display:none'>1</span><img style='height: 12px' src='/images/icons/ok.png'>"; else echo "<span style='display:none'>0</span><img style='height: 12px' src='/images/icons/x.png'>";
+									if ($tmember->validMail == 1) echo "<i class='bi bi-check'></i>"; else echo "<i class='bi bi-x'></i>";
 									echo '</td>';
 									
 								echo '</tr>';

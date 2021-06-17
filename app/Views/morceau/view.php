@@ -1136,7 +1136,7 @@
 						<div class="form-group">
 						
 							<!-- Choeurs -->
-							<label for="choeursCbInput" class="control-label col-sm-1 col-sm-offset-6"><img style="vertical-align: text-bottom;" width="16px" src="/images/icons/heart.png" alt="choeurs" title="choeurs"></label>
+							<label for="choeursCbInput" class="control-label col-sm-1 col-sm-offset-6"><img style="vertical-align: text-bottom;" width="16px" src="<?php echo base_url('/images/icons/heart.png'); ?>" alt="choeurs" title="choeurs"></label>
 							<div class="checkbox col-sm-1">
 								<label>
 									<input id="choeursCbInput" type="checkbox" value="">
@@ -1145,7 +1145,7 @@
 							</div>
 							
 							<!-- Soufflants -->
-							<label for="soufflantsCbInput" class="control-label col-sm-1"><img style="vertical-align: text-bottom;" width="16px" src="/images/icons/tp.png" alt="soufflants" title="soufflants"></label>
+							<label for="soufflantsCbInput" class="control-label col-sm-1"><img style="vertical-align: text-bottom;" width="16px" src="<?php echo base_url('/images/icons/tp.png'); ?>" alt="soufflants" title="soufflants"></label>
 							<div class="checkbox col-sm-1">
 								<label>
 									<input id="soufflantsCbInput" type="checkbox" value="">

@@ -89,9 +89,9 @@
     }
 	
 	
- </script>
+</script>
 
- 
+
 
 <!-- Formulaire !-->
 <div id="send_mail_form" class="container-fluid">
