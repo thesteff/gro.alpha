@@ -903,7 +903,7 @@ class Ajax_jam extends BaseController {
 
 	}
 	
-	/*************************   RECUPERE UNE JAMINFO DEFINI PAR jamID et le tag1  *********************************/
+	/*************************   RECUPERER UNE JAMINFO DEFINI PAR jamID et le tag1  *********************************/
 	public function get_jamInfos() {
 	
 		$jamId = trim($_POST['jamId']);

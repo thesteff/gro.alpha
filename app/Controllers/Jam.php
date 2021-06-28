@@ -573,15 +573,10 @@ class Jam extends BaseController {
 		if($this->session->login) {
 
 			$jam_model = new Jam_model();
+			$members_model = new Members_model();
 
 			// On récupère la jam
 			$data['jam_item'] = $jam_model->get_jam_id($jamId);
-		
-			// On récupère la liste des membres qui participent à la jam
-			$data['list_members'] = $jam_model->get_list_members_not_in_jam($data['jam_item']['id']);
-			
-			// On récupère la liste des membres qui participent à la jam
-			//$data['list_members'] = $this->members_model->get_members('null','asc');
 			
 			
 			// On lance la vue pour une modal box (pop-up)

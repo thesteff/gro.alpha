@@ -300,19 +300,20 @@ class Ajax_members extends BaseController {
 	
 	
 	
-	// Renvoie le membre avec l'instru
+	// Renvoie le membre avec la liste d'instru
 	public function get_member_and_listInstru() {
 	
-		$pseudo = trim($_POST['pseudo']);
+		$memberId = trim($_POST['memberId']);
 		
 		$members_model = new Members_model();
 		
-		$membre = $members_model->get_members($pseudo);
-		$listInstru = $members_model->get_instruments($membre->id);
+		$member = $members_model->get_member_by_id($memberId);
+		$listInstru = $members_model->get_instruments($member->id);
 
 		$data = array(
-			"member" => (array)$membre,
-			"listInstru" => (array)$listInstru
+			'state' => true,
+			'member' => (array)$member,
+			'listInstru' => (array)$listInstru
 		);
 		
 		$output = json_encode($data);

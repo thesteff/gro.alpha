@@ -83,6 +83,7 @@ $routes->add('group/delete_news', 'Group::delete_news');
 
 
 // GROUP
+$routes->add('ajax_group/(:any)', 'Ajax_group::$1');
 $routes->add('group/ajax_create', 'Group::ajax_create');
 $routes->add('group/ajax_delete', 'Group::ajax_delete');
 $routes->add('group/send_mail', 'Group::send_mail');
