@@ -308,6 +308,8 @@ class Ajax_members extends BaseController {
 		$members_model = new Members_model();
 		
 		$member = $members_model->get_member_by_id($memberId);
+		$members_model->calcul_age($member);
+		
 		$listInstru = $members_model->get_instruments($member->id);
 
 		$data = array(

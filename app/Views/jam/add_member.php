@@ -5,8 +5,11 @@
 
 <script type="text/javascript">
 	
+	// Variable globale du membre sélectionné
+	var selectedMember = "";
+	
+	
 	$(function() {
-		
 		
 		// On rempli les FLEXDATALIST
 		// MEMBRES
@@ -24,9 +27,6 @@
 			
 			// Un member est select ou value.length < minLength => set.text = undefined
 			.on('change:flexdatalist', function(event, set, options) {
-
-				console.log(set.text);
-				console.log(set.text == "");
 				
 				// value.length < minLength => set.text = undefined
 				if (set.text == "") {
@@ -51,7 +51,7 @@
 					
 						function (return_data) {
 							
-							console.log(return_data);
+							//console.log(return_data);
 							$obj = JSON.parse(return_data);
 							
 							// On change le curseur
@@ -60,9 +60,13 @@
 							// On affiche les données du membre sélectionné
 							if ($obj['state'] == 1) {
 								
+								// On conserve le membre dans une variable en cas d'ajout
+								selectedMember = $obj["member"];
+								
 								// On actualise l'id du membre (évite une recherche de l'id dans la datalist sur un add)
 								$("#add_member_form #member_details").attr("memberId",$obj["member"].id);
 								
+								// On rempli le member_details
 								if ($obj["member"].nom.length) {
 									$("#add_member_form #prenom_nom_span").empty().append("<b>"+$obj["member"].prenom+" "+$obj["member"].nom+"</b>");
 									$("#add_member_form #prenom_nom").removeClass("hidden");
@@ -76,6 +80,13 @@
 									$("#add_member_form #email").removeClass("hidden");
 								}
 								
+								// On s'occupe de l'avatar
+								if ($obj["member"].hasAvatar == 1) {
+									$("#add_member_form #member_details img#avatar").prop("src",'<?php echo base_url("images/avatar"); ?>'+'/'+$obj["member"].id+'.png');
+								}
+								else $("#add_member_form #member_details img#avatar").prop("src",'<?php echo base_url("images/icons/avatar2.png"); ?>');
+								
+								
 								$("#add_member_form #member_details").removeClass("hidden");
 								
 							}
@@ -86,12 +97,13 @@
 					);
 				}
 
-
 				// On active ou non le bouton d'ajout
 				if (set.text == "") $("#addBtn").addClass("disabled");
 				else $("#addBtn").removeClass("disabled");
 				
 			});
+			
+				
 	});
 	
 	
@@ -102,15 +114,15 @@
 	function add_member_request() {
 
 		// On change le curseur
-		/*document.body.style.cursor = 'wait';
+		document.body.style.cursor = 'wait';
 	
 		// Requète ajax au serveur
 		$.post("<?php echo site_url(); ?>/ajax_jam/join_jam",
 		
 			{	
 				'slugJam':'<?php echo $jam_item['slug']; ?>',
-				'id': $("#adminInput").flexdatalist('value')['id'],	// renvoie l'id du membre
-				'event_admin':1
+				'id': $(".memberList").flexdatalist('value')['id'],	// renvoie l'id du membre
+				'event_admin': 0
 			},
 		
 			function (return_data) {
@@ -121,46 +133,62 @@
 				document.body.style.cursor = 'default';
 				
 				if ($obj['state'] == 1) {
-					add_event_admin($("#adminInput").flexdatalist('value')['pseudo'], $("#adminInput").flexdatalist('value')['id']);
-					$("#add_adminBtn").addClass("disabled");
+					// On ajoute le membre dans la liste
+					//add_member_ui($obj['data']);
+					// On ferme la modal
+					//$("#addBtn").addClass("disabled");
+					//$("#addModal").modal('hide');
+					document.location.reload();
 				}
 				else {
 					console.log($obj['data']);
 				}
 			}
-		);*/
+		);
 	}
 	
 	
 	// Ajout d'admin dans la liste
-	function add_member($pseudo, $memberId) {
-	/*
-		// On créé l'item qui sera affiché
-		$listElem = $("<li class='list-group-item clearfix' memberId='"+$memberId+"'></li>");
-			// Pseudo
-			$content = "<span class='pseudo soften'><b>"+$pseudo+"</b></span>";
-			// Btn Supprimer
-			$content += '<button id="deleteBtn" class="btn btn-default btn-xs pull-right" title="Retirer de la liste"><i class="glyphicon glyphicon-trash"></i></button>';
-		$listElem.append($content);
+	/*function add_member_ui() {
 	
-		// On définit le btn delete
-		$listElem.children("#deleteBtn").on({
-			click: function(event) {
-				remove_event_admin_request($(this).parent().index());
-				event.preventDefault();
-			}
-		});
+		console.log(selectedMember);
+	
+		// On créé l'item qui sera affiché
+		$tr = $('<tr tmemberId="'+selectedMember.id+'">');
+			// Checkbox
+			$content = '<td class="selector"><span style="display:none">0</span><input type="checkbox" /></td>';
+			// Admin et référent
+			$content += '<td></td>';
+			
+			// Profil
+			$content += '<td>'+selectedMember.pseudo+'</td>';
+			$content += '<td>'+selectedMember.prenom+'</td>';
+			$content += '<td>'+selectedMember.nom+'</td>';
+			$content += '<td>'+selectedMember.email+'</td>';
+			
+			// Age
+			$content += '<td>'+selectedMember.age+'</td>';
+			
+			//Genre
+			if (selectedMember.genre == 1) genre = "man";
+			else if (selectedMember.genre == 2) genre = "woman";
+			else genre = "";
+			$content += '<td>'+genre+'</td>';
+			
+			// Mobile
+			$content += '<td>'+selectedMember.mobile+'</td>';
+			
+			// Pupitre principal
+			$content += '<td><img style="height:16px; vertical-align: text-top; margin: 0px 5px 2px 5px" src="<?php echo base_url(); ?>/images/icons/'+$selectedMember.mainPupitre['iconURL']+'" title="'+$selectedMember.mainPupitre['pupitreLabel']+'"><span class="hidden">'+$selectedMember.mainPupitre['id']+'</span></td>';
+
+			
+			
+		$tr.append($content);
 		
 		// On ajoute l'admin à la liste
-		$("#admin_list").append($listElem);
-		
-		
-		// On vide l'input
-		$("#adminInput").val('');
-		
-		// On actualise l'affichage de la liste d'admin
-		$("#admin_list").css("display","block");*/
-	}
+		$("#member_list table tbody").append($tr);
+
+	}*/
 	
 	/*function reset() {
 		if ($("#add_member_form #member_details").css("display") == "block") {
@@ -188,8 +216,8 @@
 				
 				<!-- On affiche les détails s'il y en a !-->
 				<div id="member_details" class="soften small panel panel-default hidden flexDetails" memberId="">
-					<div class="col" style="display:inline-block; vertical-align:top"><img class="img-circle avatarNotSet" src="<?php echo base_url('images/icons/avatar2.png'); ?>" hasavatar="0" width="50" height="50"></div>
-					<div class="col" style="display:inline-block; padding-left: 3px">
+					<div class="col" style="display:inline-block; vertical-align:top"><img id="avatar" class="img-circle avatarNotSet" src="<?php echo base_url('images/icons/avatar2.png'); ?>" width="50" height="50"></div>
+					<div class="col" style="display:inline-block; padding-left: 8px">
 						<div id="prenom_nom" class="hidden"><span id="prenom_nom_span"></span></div>
 						<div id="mainInstru" class="hidden"><i class="bi bi-music-note-beamed"></i><span id="mainInstru_span"></span></div>
 						<div id="email" class="hidden"><i class="bi bi-envelope-fill"></i><span id="email_span"></span></div>

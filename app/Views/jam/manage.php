@@ -232,10 +232,10 @@
 			if (event.which == 46) {
 				
 				// Par sécurité, on ne supprime qu'une inscription à la fois
-				if ($("#jam_list .selected").length == 1) {
+				if ($("#member_list .selected").length == 1) {
 				
 					// On récupère la tr du membre selectionné
-					$tr = $("#jam_list .selected");
+					$tr = $("#member_list .selected");
 					
 					// On récupère l'index de la colonne pseudo et le pseudo
 					$index = 0;
@@ -488,10 +488,10 @@
 		document.body.style.cursor = 'wait';
 		
 		// Par sécurité, on ne supprime qu'une inscription à la fois et pas les stagaires
-		if ($("#jam_list .selected").length > 1) return;
+		if ($("#member_list .selected").length > 1) return;
 		
 		// On récupère le pseudo
-		$tr = $("#jam_list .selected");
+		$tr = $("#member_list .selected");
 		// On récupère l'index de la colonne pseudo et le pseudo
 		$index = 0;
 		$tr.closest("table").children("thead").children("tr").children().each(function($i) {
@@ -681,7 +681,7 @@
 		CKEDITOR.instances.editor1.setData("");
 		
 		// On actualise le nombre de jammeurs
-		$("#nbJammeur small").empty().append("("+$("#jam_list tbody").children().length+")")
+		$("#nbJammeur small").empty().append("("+$("#member_list tbody").children().length+")")
 	}
 
 </script>
@@ -739,7 +739,7 @@
 		<!-- Affichage des membres inscrits -->
 		<?php if (sizeof($list_members) > 0) :?>
 			<div class="small_block_list_title soften">Liste des jammeurs <span id="nbJammeur" class="soften"><small>(<?php echo sizeof($list_members); ?>)</small></span></div>
-			<div id="jam_list">
+			<div id="member_list">
 				<table id="tab" class="tablesorter focus-highlight" cellspacing="0">
 					<thead>
 						 <tr>
@@ -759,7 +759,7 @@
 					</thead>
 					<tfoot>
 						<tr>
-							<th><input id="select_all_jam_list" type="checkbox" onclick="select_all('jam_list')" /></th>
+							<th><input id="select_all_member_list" type="checkbox" onclick="select_all('member_list')" /></th>
 							<th>Admin</th>
 							<th>Pseudo</th>
 							<th>Prénom</th>
